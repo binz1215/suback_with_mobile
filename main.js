@@ -105,14 +105,17 @@ window.onkeydown = (event) => {
   }
   switch (event.code) {
     case 'KeyA':
+    case 'ArrowLeft':
       left();
       break;
 
     case 'KeyD':
+    case 'ArrowRight':
       right();
       break;
 
     case 'KeyS':
+    case 'ArrowDown':
       currentBody.isSleeping = false;
       disableAction = true;
 
@@ -129,6 +132,8 @@ window.onkeyup = (event) => {
   switch (event.code) {
     case 'KeyA':
     case 'KeyD':
+    case 'ArrowLeft':
+    case 'ArrowRight':
       clearInterval(interval);
       interval = null;
   }
@@ -147,6 +152,7 @@ rightBtn.addEventListener(getConvertedEventType('mousedown'), () => {
 });
 
 downBtn.addEventListener(getConvertedEventType('mousedown'), () => {
+  if (disableAction) return;
   currentBody.isSleeping = false;
   disableAction = true;
 
